@@ -63,6 +63,7 @@ jobs:
             echo "01_2.py output matches expected value."
           else
             echo "01_2.py output does not match expected value."
+            echo "$line2 != $expected_output2"
             exit 1
           fi
 
