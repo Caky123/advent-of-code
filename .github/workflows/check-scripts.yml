@@ -1,0 +1,74 @@
+name: Check Python Scripts Outputs
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-scripts-output:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Python
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      # Run all Python scripts and append output to a single file
+      - name: Run all Python scripts
+        run: |
+          # Clear previous output file if it exists
+          > output.txt
+
+          # Run each script and append its output to the same file
+          python 01_1.py >> output.txt
+          echo "" >> output.txt  # Add a newline for separation
+
+          python 01_2.py >> output.txt
+          echo "" >> output.txt  # Add a newline for separation
+
+          python 02_1.py >> output.txt
+          echo "" >> output.txt  # Add a newline for separation
+
+      # Validate output for each script based on specific lines
+      - name: Validate output for all scripts
+        run: |
+          # Read each specific line from the output file
+          line1=$(sed -n '1p' output.txt)
+          line2=$(sed -n '2p' output.txt)
+          line3=$(sed -n '3p' output.txt)
+
+          # Expected outputs
+          expected_output1="Result is <232>"
+          expected_output2="Result is <1783>"
+          expected_output3="Result is <1598415>"
+
+          # Validate each output line
+          if [[ "$line1" == "$expected_output1" ]]; then
+            echo "01_1.py output matches expected value."
+          else
+            echo "01_1.py output does not match expected value."
+            exit 1
+          fi
+
+          if [[ "$line2" == "$expected_output2" ]]; then
+            echo "01_2.py output matches expected value."
+          else
+            echo "01_2.py output does not match expected value."
+            exit 1
+          fi
+
+          if [[ "$line3" == "$expected_output3" ]]; then
+            echo "02_1.py output matches expected value."
+          else
+            echo "02_1.py output does not match expected value."
+            exit 1
+          fi

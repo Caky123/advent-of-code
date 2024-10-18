@@ -25,4 +25,4 @@ for line in read_file('data/day02/input.txt'):
     present = Present(line.split("x"))
     total += present.surface_area
 
-print(total)
+print(f"Result is <{total}>")
