@@ -29,21 +29,21 @@ jobs:
           > output.txt
 
           # Run each script and append its output to the same file
-          python 01_1.py >> output.txt
-          echo "" >> output.txt  # Add a newline for separation
+          python 01_1.py + "\n" >> output.txt
+          # echo "" >> output.txt  # Add a newline for separation
 
-          python 01_2.py >> output.txt
-          echo "" >> output.txt  # Add a newline for separation
+          python 01_2.py + "\n" >> output.txt
+          # echo "" >> output.txt  # Add a newline for separation
 
-          python 02_1.py >> output.txt
-          echo "" >> output.txt  # Add a newline for separation
+          python 02_1.py + "\n" >> output.txt
+          # echo "" >> output.txt  # Add a newline for separation
 
       # Validate output for each script based on specific lines
       - name: Validate output for all scripts
         run: |
           # Read each specific line from the output file
           line1=$(sed -n '1p' output.txt)
-          line2=$(sed -n '3p' output.txt)
+          line2=$(sed -n '2p' output.txt)
           line3=$(sed -n '3p' output.txt)
 
           # Expected outputs
