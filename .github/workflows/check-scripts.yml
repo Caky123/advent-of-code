@@ -46,12 +46,14 @@ jobs:
           line2=$(sed -n '2p' output.txt)
           line3=$(sed -n '3p' output.txt)
           line4=$(sed -n '4p' output.txt)
+          line5=$(sed -n '5p' output.txt)
 
           # Expected outputs
-          expected_output1="Result is <232>"
-          expected_output2="Result is <1783>"
-          expected_output3_1="Result (square feet of wrapping paper) is <1598415>"
-          expected_output3_2="Result (feet of ribbon) is <3812909>"
+          expected_output1_1="Result is <232>"
+          expected_output1_2="Result is <1783>"
+          expected_output2_1="Result (square feet of wrapping paper) is <1598415>"
+          expected_output2_2="Result (feet of ribbon) is <3812909>"
+          expected_output3_1="Result is <2592>"
 
           # Validate each output line
           if [[ "$line1" == "$expected_output1" ]]; then
@@ -61,7 +63,7 @@ jobs:
             exit 1
           fi
 
-          if [[ "$line2" == "$expected_output2" ]]; then
+          if [[ "$line2" == "$expected_output1_2" ]]; then
             echo "01_2.py output matches expected value."
           else
             echo "01_2.py output does not match expected value."
@@ -69,17 +71,25 @@ jobs:
             exit 1
           fi
 
-          if [[ "$line3" == "$expected_output3_1" ]]; then
+          if [[ "$line3" == "$expected_output2_1" ]]; then
             echo "02_1_2.py 2.1 - output matches expected value."
           else
             echo "02_1_2.py 2.1 - output does not match expected value."
             exit 1
           fi
 
-          if [[ "$line4" == "$expected_output3_2" ]]; then
+          if [[ "$line4" == "$expected_output2_2" ]]; then
             echo "02_1_2.py 2.2 - output matches expected value."
           else
             echo "02_1_2.py 2.2 - output does not match expected value."
             echo "$line4 != $expected_output3_2"
+            exit 1
+          fi
+
+          if [[ "$line5" == "$expected_output3_1" ]]; then
+            echo "03_1.py 3.1 - output matches expected value."
+          else
+            echo "03_1.py 3.1 - output does not match expected value."
+            echo "$line5 != $expected_output3_2"
             exit 1
           fi
