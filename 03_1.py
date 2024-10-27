@@ -10,7 +10,7 @@ logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s', st
 
 def main()->None:
     santa: Santa = Santa()
-    for i, direction in enumerate(read_file('data/day03/input.txt', 1), start=1):
+    for direction in read_file('data/day03/input.txt', 1):
         santa.move(direction)
     logging.info(f"Result is <{santa.visited_at_least()}>")
 

@@ -41,6 +41,7 @@ jobs:
           python 03_1.py + "\n" >> output.txt
           # echo "" >> output.txt  # Add a newline for separation
           python 03_2.py + "\n" >> output.txt
+          python 04_1_2.py + "\n" >> output.txt
 
       # Validate output for each script based on specific lines
       - name: Validate output for all scripts
@@ -52,6 +53,8 @@ jobs:
           line4=$(sed -n '4p' output.txt)
           line5=$(sed -n '5p' output.txt)
           line6=$(sed -n '6p' output.txt)
+          line7=$(sed -n '7p' output.txt)
+          line8=$(sed -n '8p' output.txt)
 
           # Expected outputs
           expected_output1_1="Result is <232>"
@@ -60,6 +63,8 @@ jobs:
           expected_output2_2="Result (feet of ribbon) is <3812909>"
           expected_output3_1="INFO - Result is <2592>"
           expected_output3_2="INFO - Result is <2360>"
+          expected_output4_1=INFO - Result is <117946>
+          expected_output4_2=INFO - Result is <3938038>
 
           # Validate each output line
           if [[ "$line1" == "$expected_output1_1" ]]; then
@@ -105,5 +110,21 @@ jobs:
           else
             echo "03_2.py 3.2 - output does not match expected value."
             echo "$line6 != $expected_output3_2"
+            exit 1
+          fi
+
+          if [[ "$line7" == "$expected_output4_1" ]]; then
+            echo "04_1.py 4.1 - output matches expected value."
+          else
+            echo "04_1.py 4.1 - output does not match expected value."
+            echo "$line7 != $expected_output4_1"
+            exit 1
+          fi
+
+          if [[ "$line8" == "$expected_output4_2" ]]; then
+            echo "04_1.py 4.2 - output matches expected value."
+          else
+            echo "04_1.py 4.2 - output does not match expected value."
+            echo "$line8 != $expected_output4_2"
             exit 1
           fi
