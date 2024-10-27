@@ -57,8 +57,8 @@ def main()->None:
     santa: Santa = Santa()
     for direction in read_file('data/day03/input.txt', 1):
         santa.move(direction)
-
-    logging.info(f"Result is <{santa.visited_at_least()}>")
+    print(f"Result is <{santa.visited_at_least()}>")
+    # logging.info(f"Result is <{santa.visited_at_least()}>")
 
 if __name__ == "__main__":
     main()
