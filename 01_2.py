@@ -1,13 +1,18 @@
 from util import read_file_in_chunks as read_file
 
-result = 0
-index = 0
 
-for count, chunk in enumerate(read_file('data/day01/input.txt', 1), start = 1):
-    result += chunk.count("(") - chunk.count(")")
+def find_floor(floor_number: int = -1) -> int:
+    result: int = 0
+    for count, chunk in enumerate(read_file('data/day01/input.txt', 1), start = 1):
+        result += 1 if chunk == "(" else -1
 
-    if result == -1:
-        index = count
-        break
+        if result == floor_number:
+            return count
 
-print(f"Result is <{index}>")
+
+def main():
+    print(f"Result is <{find_floor()}>")
+
+
+if __name__ == "__main__":
+    main()    
