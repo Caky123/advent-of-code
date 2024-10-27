@@ -38,6 +38,9 @@ jobs:
           python 02_1_2.py + "\n" >> output.txt
           # echo "" >> output.txt  # Add a newline for separation
 
+          python 03_1.py + "\n" >> output.txt
+          # echo "" >> output.txt  # Add a newline for separation
+
       # Validate output for each script based on specific lines
       - name: Validate output for all scripts
         run: |
