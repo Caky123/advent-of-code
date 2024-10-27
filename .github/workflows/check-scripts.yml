@@ -63,8 +63,8 @@ jobs:
           expected_output2_2="Result (feet of ribbon) is <3812909>"
           expected_output3_1="INFO - Result is <2592>"
           expected_output3_2="INFO - Result is <2360>"
-          expected_output4_1=INFO - Result is <117946>
-          expected_output4_2=INFO - Result is <3938038>
+          expected_output4_1="INFO - Result is <117946>"
+          expected_output4_2="INFO - Result is <3938038>"
 
           # Validate each output line
           if [[ "$line1" == "$expected_output1_1" ]]; then
