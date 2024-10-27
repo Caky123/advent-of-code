@@ -29,19 +29,19 @@ jobs:
           > output.txt
 
           # Run each script and append its output to the same file
-          python 01_1.py + "\n" >> output.txt
+          python ./src/01_1.py + "\n" >> output.txt
           # echo "" >> output.txt  # Add a newline for separation
 
-          python 01_2.py + "\n" >> output.txt
+          python ./src/01_2.py + "\n" >> output.txt
           # echo "" >> output.txt  # Add a newline for separation
 
-          python 02_1_2.py + "\n" >> output.txt
+          python ./src/02_1_2.py + "\n" >> output.txt
           # echo "" >> output.txt  # Add a newline for separation
 
-          python 03_1.py + "\n" >> output.txt
+          python ./src/03_1.py + "\n" >> output.txt
           # echo "" >> output.txt  # Add a newline for separation
-          python 03_2.py + "\n" >> output.txt
-          python 04_1_2.py + "\n" >> output.txt
+          python ./src/03_2.py + "\n" >> output.txt
+          python ./src/04_1_2.py + "\n" >> output.txt
 
       # Validate output for each script based on specific lines
       - name: Validate output for all scripts
