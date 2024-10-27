@@ -12,15 +12,13 @@ def main()->None:
     santa: Santa = Santa()
     robo_santa: Santa = Santa()
 
-    print(santa is robo_santa)
-
     for i, direction in enumerate(read_file('data/day03/input.txt', 1), start=1):
         if i % 2 == 0:
             robo_santa.move(direction)
         else:
             santa.move(direction)
 
-    logging.info(f"Result is <{robo_santa.visited_at_least()}>")
+    logging.info(f"Result is <{santa.visited_at_least()}>")
 
 if __name__ == "__main__":
     main()
