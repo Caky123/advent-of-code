@@ -45,6 +45,7 @@ jobs:
           line1=$(sed -n '1p' output.txt)
           line2=$(sed -n '2p' output.txt)
           line3=$(sed -n '3p' output.txt)
+          line4=$(sed -n '4p' output.txt)
 
           # Expected outputs
           expected_output1="Result is <232>"
