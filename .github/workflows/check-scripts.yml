@@ -53,7 +53,7 @@ jobs:
           expected_output1_2="Result is <1783>"
           expected_output2_1="Result (square feet of wrapping paper) is <1598415>"
           expected_output2_2="Result (feet of ribbon) is <3812909>"
-          expected_output3_1="Result is <2592>"
+          expected_output3_1="INFO - Result is <2592>"
 
           # Validate each output line
           if [[ "$line1" == "$expected_output1_1" ]]; then
@@ -90,6 +90,6 @@ jobs:
             echo "03_1.py 3.1 - output matches expected value."
           else
             echo "03_1.py 3.1 - output does not match expected value."
-            echo "$line5 != $expected_output3_2"
+            echo "$line5 != $expected_output3_1"
             exit 1
           fi
