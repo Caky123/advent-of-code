@@ -79,5 +79,6 @@ jobs:
             echo "02_1_2.py 2.2 - output matches expected value."
           else
             echo "02_1_2.py 2.2 - output does not match expected value."
+            echo "$line4 != $expected_output3_2"
             exit 1
           fi
