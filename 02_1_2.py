@@ -7,7 +7,7 @@ class Result:
     surface_area: int
     feet_of_ribbon: int
 
-def calc_total_presents_param():
+def calc_total_presents_param()->Result:
     total_surface_area = 0
     total_feet_ribbon = 0
     for line in read_file('data/day02/input.txt'):
@@ -19,7 +19,7 @@ def calc_total_presents_param():
             print(e)
     return Result(surface_area = total_surface_area, feet_of_ribbon = total_feet_ribbon)
 
-def main():
+def main()->None:
     result: Result = calc_total_presents_param()
     print(f"Result (square feet of wrapping paper) is <{result.surface_area}>")
     print(f"Result (feet of ribbon) is <{result.feet_of_ribbon}>")

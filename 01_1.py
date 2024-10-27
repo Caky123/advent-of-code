@@ -8,7 +8,7 @@ def find_final_floor():
     return result
 
 
-def main():
+def main()->None:
     print(f"Result is <{find_final_floor()}>")
 
 

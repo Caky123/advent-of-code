@@ -1,9 +1,10 @@
 from typing import Callable, Dict, Tuple, Optional
 import logging
+import sys
 
 from util import read_file_in_chunks as read_file
 
-logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, format='%(levelname)s - %(message)s', stream=sys.stdout)
 
 
 class Santa:
@@ -57,8 +58,8 @@ def main()->None:
     santa: Santa = Santa()
     for direction in read_file('data/day03/input.txt', 1):
         santa.move(direction)
-    print(f"Result is <{santa.visited_at_least()}>")
-    # logging.info(f"Result is <{santa.visited_at_least()}>")
+    #print(f"Result is <{santa.visited_at_least()}>")
+    logging.info(f"Result is <{santa.visited_at_least()}>")
 
 if __name__ == "__main__":
     main()
